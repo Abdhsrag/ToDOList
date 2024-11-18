@@ -1,0 +1,16 @@
+<main class="container my-5 shadow p-5 bg-secondary rounded">
+  <div class="my-5 input-group input-group-lg">
+    <input [(ngModel)]="newTask" type="text" class="form-control" placeholder="Enter New Task" />
+    <a href="#" class="ms-2 btn btn-success" (click)="addTask()"><i class="bi bi-plus-circle"></i> Add Task</a>
+  </div>
+  <ul class="mx-5 my-5 list-group">
+    <li *ngFor="let task of todoList; let index = index" [ngClass]="{'completed': task.completed}" class="list-group-item d-flex justify-content-around align-items-center">
+      <input
+      type="checkbox"
+      [checked]="task.completed"
+      (change)="complete(index)">
+      <span [class.completed]="task.completed">{{ task.task }}</span>
+      <a href="#" class="btn btn-danger" (click)="delete(index)"><i class="bi bi-trash"> Remove</i></a>
+    </li>
+  </ul>
+</main>
